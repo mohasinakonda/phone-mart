@@ -1,7 +1,11 @@
+// global containers
 const inputValue = document.getElementById("search-value")
 const productsContainer = document.getElementById("products-container")
 
 const ProductsDetailsModal = document.getElementById("products-details")
+const showAllBtn = document.getElementById("showAll-btn")
+
+// search functionality
 document.getElementById("search-btn").addEventListener("click", () => {
 	const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue.value}`
 
@@ -19,7 +23,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
 	productsContainer.innerHTML = ""
 })
 const getPhones = (phones) => {
-	document.getElementById("showAll-btn").classList.remove("d-none")
+	showAllBtn.classList.remove("d-none")
 
 	const twentyPhones = phones.slice(0, 20)
 	twentyPhones.forEach((phone) => {
