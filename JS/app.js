@@ -3,7 +3,6 @@ const inputValue = document.getElementById("search-value")
 const productsContainer = document.getElementById("products-container")
 
 const ProductsDetailsModal = document.getElementById("products-details")
-const showAllBtn = document.getElementById("showAll-btn")
 
 // search functionality
 document.getElementById("search-btn").addEventListener("click", () => {
@@ -24,7 +23,6 @@ document.getElementById("search-btn").addEventListener("click", () => {
 })
 // get phones
 const getPhones = (phones) => {
-	showAllBtn.classList.remove("d-none")
 	// show twentyPhones
 	const twentyPhones = phones.slice(0, 20)
 	twentyPhones.forEach((phone) => {
@@ -94,7 +92,6 @@ const features = (mainFeatures, title) => {
 	div.appendChild(h3)
 	div.classList.add("col-12")
 	for (const [key, value] of Object.entries(mainFeatures)) {
-		console.log(key)
 		const p = document.createElement("p")
 
 		p.innerHTML = `<span class="fw-bold">${key}</span> &rarr; ${value}`
