@@ -18,17 +18,16 @@ document.getElementById("search-btn").addEventListener("click", () => {
 			}
 			getPhones(data.data)
 		})
-	// getPhones(data.data)
+
 	inputValue.value = ""
 	productsContainer.innerHTML = ""
 })
+// get phones
 const getPhones = (phones) => {
 	showAllBtn.classList.remove("d-none")
-
+	// show twentyPhones
 	const twentyPhones = phones.slice(0, 20)
 	twentyPhones.forEach((phone) => {
-		// console.log(phone)
-
 		const div = document.createElement("div")
 
 		div.classList.add("card", "col-md-6", "m-2")
@@ -49,7 +48,7 @@ const getPhones = (phones) => {
 
 	ProductsDetailsModal.textContent = ""
 }
-
+// get phones  details
 const getPhoneDetails = (id) => {
 	const url = `https://openapi.programming-hero.com/api/phone/${id}`
 	fetch(url)
@@ -57,7 +56,7 @@ const getPhoneDetails = (id) => {
 		.then((phonesDetails) => getPhonesById(phonesDetails.data))
 	ProductsDetailsModal.textContent = ""
 }
-
+// get phone by id
 const getPhonesById = (phone) => {
 	ProductsDetailsModal.innerHTML = ""
 	const sensors = phone.mainFeatures.sensors ?? []
@@ -65,7 +64,7 @@ const getPhonesById = (phone) => {
 	console.log(sensors)
 	const mainFeatures = phone.mainFeatures
 	const otherFeature = phone.others ?? {}
-	// console.log(otherFeature)
+
 	const releaseDate = phone.releaseDate
 		? phone.releaseDate
 		: "Release date not available"
@@ -86,9 +85,10 @@ const getPhonesById = (phone) => {
 	sensorsList(sensors)
 	features(otherFeature, "Other feature :")
 }
+// feature template
 const features = (mainFeatures, title) => {
 	const div = document.createElement("div")
-	// main features
+
 	const h3 = document.createElement("h3")
 	h3.innerHTML = title
 	div.appendChild(h3)
@@ -103,6 +103,8 @@ const features = (mainFeatures, title) => {
 		ProductsDetailsModal.appendChild(div)
 	}
 }
+
+// showing sensor
 
 const sensorsList = (sensor) => {
 	const div = document.createElement("div")
